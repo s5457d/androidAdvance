@@ -40,7 +40,7 @@ public class DiskClassLoader extends ClassLoader {
         try {
             in = new FileInputStream(file);
             out = new ByteArrayOutputStream();
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[1];
             int length = 0;
             while ((length = in.read(buffer)) != -1) {
                 out.write(buffer);
