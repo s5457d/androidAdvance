@@ -21,7 +21,7 @@ public class BitmapResize {
      * @param hasAlpha 是否支持透明度
      * @return bitmap
      */
-    public static Bitmap resizeBitmap(Context context, int id, int maxW, int maxH, boolean hasAlpha) {
+    public static Bitmap resizeBitmap(Context context, int id, int maxW, int maxH, boolean hasAlpha, Bitmap reusable) {
         Resources resources = context.getResources();
         BitmapFactory.Options options = new BitmapFactory.Options();
         // 拿到系统处理的信息，比如解码高度宽度
@@ -41,6 +41,10 @@ public class BitmapResize {
 
         // 根据options设置获取到图片信息
         options.inJustDecodeBounds = false;
+
+        // 设置成可以复用, 重复加载图片，不需要重复开辟内存
+        options.inMutable = true;
+        options.inBitmap = reusable;
         return BitmapFactory.decodeResource(resources, id, options);
     }
 
