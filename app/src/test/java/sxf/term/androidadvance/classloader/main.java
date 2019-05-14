@@ -12,11 +12,11 @@ import java.lang.reflect.Method;
 public class main {
 
     @Test
-    public void main(){
+    public void main() {
         DiskClassLoader diskClassLoader = new DiskClassLoader("/Users/sunzhongda/Desktop");
         try {
             Class<?> c = diskClassLoader.loadClass("sxf.term.androidadvance.classloader.Jobs");
-            if (c!=null){
+            if (c != null) {
                 Object obj = c.newInstance();
                 System.out.println(obj.getClass().getClassLoader());
                 Method method = c.getDeclaredMethod("say", null);
